@@ -6,118 +6,132 @@
 [![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=flat&logo=dart)](https://dart.dev)
 [![Firebase](https://img.shields.io/badge/Firebase-2026-FFCA28?style=flat&logo=firebase)](https://firebase.google.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/MAXTONYENZO/EventTiming-App)
 
 ---
 
 ## 📋 Tabla de Contenidos
 
-1. [Descripción del Proyecto](#descripción-del-proyecto)
-2. [Problemática](#problemática)
-3. [Pregunta Problema](#pregunta-problema)
-4. [Objetivos SMART](#objetivos-smart)
-5. [Arquitectura de la Solución](#arquitectura-de-la-solución)
-6. [Stack Tecnológico](#stack-tecnológico)
-7. [Estrategia de Seguridad](#estrategia-de-seguridad)
-8. [Simulador de Costos](#simulador-de-costos)
-9. [Estructura del Proyecto](#estructura-del-proyecto)
-10. [Guía de Instalación y Despliegue](#guía-de-instalación-y-despliegue)
-11. [Metodología](#metodología)
-12. [Equipo](#equipo)
-13. [Licencia](#licencia)
+1. [Descripción del Proyecto](#-1-descripción-del-proyecto)
+2. [Problemática](#-2-problemática)
+3. [Pregunta Problema](#-3-pregunta-problema)
+4. [Objetivos SMART](#-4-objetivos-smart)
+5. [Arquitectura de la Solución](#-5-arquitectura-de-la-solución)
+6. [Stack Tecnológico](#-6-stack-tecnológico)
+7. [Estrategia de Seguridad](#-7-estrategia-de-seguridad)
+8. [Simulador de Costos](#-8-simulador-de-costos)
+9. [Estructura del Proyecto](#-9-estructura-del-proyecto)
+10. [Guía de Instalación y Despliegue](#-10-guía-de-instalación-y-despliegue)
+11. [Metodología de Desarrollo](#-11-metodología-de-desarrollo)
+12. [Equipo](#-12-equipo)
+13. [Licencia](#-13-licencia)
 
 ---
 
 ## 📱 1. Descripción del Proyecto
 
-**EventTiming** es una aplicación móvil multiplataforma desarrollada en **Flutter** con integración **Firebase** que permite la gestión colaborativa del cronograma en tiempo real para eventos sociales (bodas, celebraciones y eventos corporativos). La app sincroniza a wedding planners, proveedores y novios en un solo ecosistema, reduciendo los tiempos de coordinación y mejorando la comunicación durante todo el ciclo del evento.
+**EventTiming** es una aplicación móvil multiplataforma desarrollada en **Flutter** con integración **Firebase** que permite la gestión colaborativa del cronograma en tiempo real para eventos sociales (bodas, celebraciones y eventos corporativos).
+
+La app sincroniza a **wedding planners, proveedores y novios** en un solo ecosistema, reduciendo los tiempos de coordinación y mejorando la comunicación durante todo el ciclo del evento, desde la planificación hasta la ejecución y desmontaje.
+
+### 🎯 ¿Por qué EventTiming?
+
+| Dimensión | Descripción |
+|-----------|-------------|
+| **📱 Multiplataforma** | Una sola base de código para Android e iOS gracias a Flutter. |
+| **⚡ Tiempo Real** | Sincronización instantánea con Firebase Firestore. |
+| **🔐 Seguro** | Autenticación con Firebase Auth y almacenamiento cifrado con `flutter_secure_storage`. |
+| **📡 Offline-First** | Arquitectura que permite trabajar sin conexión y sincroniza al recuperar red. |
+| **👥 Colaborativo** | Gestión de roles diferenciados (planner, proveedores, novios). |
+| **💰 Costo Cero** | El plan gratuito de Firebase (Spark) cubre el 100% de la operación para proyectos en etapa inicial. |
 
 ---
 
 ## 🎯 2. Problemática
 
-Los organizadores de eventos y proveedores enfrentan una coordinación ineficiente debido a la falta de una herramienta móvil centralizada. Actualmente, la comunicación depende de canales fragmentados como WhatsApp, llamadas telefónicas y listas en papel, generando tres problemáticas críticas:
+Los organizadores de eventos y proveedores enfrentan una coordinación ineficiente debido a la falta de una herramienta móvil centralizada. Actualmente, la comunicación depende de **canales fragmentados** como WhatsApp, llamadas telefónicas y listas en papel, generando tres problemáticas críticas:
 
 | # | Problemática | Impacto |
 |---|--------------|---------|
-| 1 | **Falta de visibilidad en tiempo real** del estado de las tareas | Incremento de la carga operativa en un **40%** durante las horas previas al evento |
-| 2 | **Retrasos no comunicados oportunamente** | Desfases de hasta **30 minutos** en el cronograma |
-| 3 | **Procesos manuales desactualizados** | Más de **2 horas diarias** dedicadas a actualizar y comunicar cambios |
+| 1 | **Falta de visibilidad en tiempo real** del estado de las tareas | Incremento de la carga operativa en un **40%** durante las horas previas al evento. |
+| 2 | **Retrasos no comunicados oportunamente** | Desfases de hasta **30 minutos** en el cronograma, afectando la experiencia de los asistentes. |
+| 3 | **Procesos manuales desactualizados** | Más de **2 horas diarias** dedicadas a actualizar y comunicar cambios, reduciendo el tiempo para tareas estratégicas. |
+
+### 📊 Datos Relevantes
+
+| Indicador | Valor |
+|-----------|-------|
+| **Carga operativa extra** | +40% en horas previas al evento |
+| **Retraso promedio** | 30 minutos por evento |
+| **Tiempo en actualizaciones** | 2 horas diarias |
+| **Reducción esperada** | 50% de los tiempos de coordinación |
 
 ---
 
 ## ❓ 3. Pregunta Problema
 
-> ¿De qué manera la implementación de una aplicación móvil multiplataforma en Flutter con integración Firebase y sincronización en tiempo real permite reducir en un **50% los tiempos de coordinación** entre wedding planners y proveedores durante la organización y ejecución de eventos sociales?
+> ¿De qué manera la implementación de una aplicación móvil multiplataforma en **Flutter** con integración **Firebase** y sincronización en **tiempo real** permite reducir en un **50% los tiempos de coordinación** entre wedding planners y proveedores durante la organización y ejecución de eventos sociales?
 
 ---
 
 ## 🎯 4. Objetivos SMART
 
-| Dimensión | Definición del Objetivo |
-| :--- | :--- |
-| **S (Específico)** | Desarrollar y desplegar una aplicación móvil multiplataforma que sincronice el timeline de eventos en tiempo real entre planners, novios y proveedores. |
-| **M (Medible)** | Lograr una reducción del **40% en los tiempos de espera y desajustes de horarios** entre proveedores y una tasa de satisfacción del usuario superior al **95%** en encuestas post-evento. |
-| **A (Alcanzable)** | Utilizar servicios administrados de Firebase (Authentication y Cloud Firestore) para garantizar escalabilidad automática sin requerir infraestructura de servidor dedicada. |
-| **R (Relevante)** | Brindar tranquilidad y control total a planners y anfitriones, transformando la puntualidad y coordinación en la principal ventaja competitiva del evento. |
-| **T (Tiempo)** | Concluir el MVP funcional en un plazo de **4 semanas** bajo ciclos iterativos de desarrollo ágil. |
+### Objetivo General
+
+> Desarrollar una aplicación móvil multiplataforma en Flutter con integración Firebase que permita la gestión del timing en tiempo real en eventos sociales, logrando una **reducción del 50% en los tiempos de coordinación** entre wedding planners y proveedores, y alcanzando una **calificación de usabilidad superior a 80 puntos en la escala SUS**, en un período de **8 semanas** con enfoque en dispositivo Android.
+
+### Desglose SMART
+
+| Criterio | Descripción |
+|----------|-------------|
+| **S** (Específico) | Desarrollar y desplegar una aplicación móvil multiplataforma que sincronice el timeline de eventos en tiempo real entre planners, novios y proveedores. |
+| **M** (Medible) | Reducción del **50%** en tiempos de coordinación y calificación de usabilidad **SUS > 80**. |
+| **A** (Alcanzable) | Utilizar servicios administrados de Firebase (Authentication y Cloud Firestore) para garantizar escalabilidad automática sin requerir infraestructura de servidor dedicada. |
+| **R** (Relevante) | Brindar tranquilidad y control total a planners y anfitriones, transformando la puntualidad y coordinación en la principal ventaja competitiva del evento. |
+| **T** (Time-bound) | Concluir el MVP funcional en un período de **8 semanas** bajo ciclos iterativos de desarrollo ágil. |
+
+### Objetivos Específicos (3 Fases)
+
+| Fase | Objetivo | Plazo | Criterio de Éxito |
+|------|----------|-------|-------------------|
+| **1** | **Investigación de Usuario y Prototipado UX/UI** | Semana 2 | Diseñar wireframes y prototipo en Figma, evaluando con 5 usuarios y alcanzando SUS > 85. |
+| **2** | **Desarrollo Frontend e Integración API/Backend** | Semana 6 | Programar módulos en Flutter, integrar Firebase con tiempo de respuesta < 500 ms. |
+| **3** | **Pruebas en Dispositivos Reales y Medición** | Semana 8 | Probar en 10 dispositivos Android, con batería <5%/hora y SUS > 80. |
 
 ---
 
-
 ## 🏗️ 5. Arquitectura de la Solución
+
+La aplicación sigue una **arquitectura limpia en capas (Clean Architecture)** desacoplada, reactiva y mantenible, implementando el patrón **Offline-First**.
+
+### Diagrama de Arquitectura
 
 La aplicación sigue una arquitectura limpia en capas (*Clean Architecture*) desacoplada, reactiva y mantenible:
 
 ```mermaid
 graph TD
-    subgraph UI_Layer ["📱 Capa de Presentación (Flutter UI)"]
-        A1[SplashScreen]
-        A2[LoginScreen & RegisterScreen]
-        A3[TimelineScreen]
-        A4["Widgets: TaskCard, CustomTextField, LoadingWidget"]
-    end
-
-    subgraph State_Layer ["🔄 Capa de Estado e Inyección (Provider)"]
-        B1[MultiProvider / ChangeNotifier]
-        B2[StreamProvider User Session]
-    end
-
-    subgraph Services_Layer ["⚙️ Capa de Servicios y Dominio"]
-        C1[AuthService]
-        C2[FirestoreService]
-        C3[NotificationService]
-        C4[Validators & Constants]
-    end
-
-    subgraph Security_Storage ["🔒 Seguridad y Almacenamiento Local"]
-        D1["FlutterSecureStorage (Keychain / Keystore)"]
-    end
-
-    subgraph Backend_Cloud ["☁️ Backend Serverless (Google Firebase)"]
-        E1[Firebase Authentication]
-        E2[Cloud Firestore Realtime DB]
-        E3[Firestore Security Rules RBAC]
-    end
-
-    UI_Layer --> State_Layer
-    State_Layer --> Services_Layer
-    Services_Layer --> Security_Storage
-    Services_Layer --> Backend_Cloud
+    A[Dispositivo Móvil<br>Flutter + Dart] --> B[Firebase Services]
+    A --> C[SQLite/Drift<br>Offline-First]
+    B --> D[Firestore<br>Base de Datos Tiempo Real]
+    B --> E[Auth<br>Autenticación JWT]
+    B --> F[Cloud Messaging<br>Notificaciones Push]
+    B --> G[Storage<br>Evidencias Fotográficas]
+    H[API REST<br>Servicios Externos] --> A
+    I[Git/GitHub<br>Control de Versiones] -.-> A
 ```
-
----
-
 ## 🛠️ 6. Stack Tecnológico
 
-- **Framework:** [Flutter 3.x](https://flutter.dev/) (Channel Stable)
-- **Lenguaje:** [Dart 3.x](https://dart.dev/)
-- **Backend & Base de Datos:**
-  - **Firebase Authentication:** Autenticación por correo y contraseña, gestión de sesiones y recuperación de accesos.
-  - **Cloud Firestore:** Base de datos NoSQL documental con suscripciones en tiempo real (`Streams`).
-- **Gestión de Estado:** [Provider 6.x](https://pub.dev/packages/provider)
-- **Seguridad en Dispositivo:** [flutter_secure_storage 9.x](https://pub.dev/packages/flutter_secure_storage) (Cifrado AES en Android Keystore y Apple Keychain en iOS)
-- **Diseño & UI:** Google Material Design 3 con paleta personalizada (Azul `#1976D2`, Naranja `#FB8C00`, Verde `#43A047`).
-
+Capa	Tecnología	Versión	Propósito
+Framework	Flutter	3.x	Desarrollo multiplataforma (Android/iOS).
+Lenguaje	Dart	3.x	Lenguaje nativo de Flutter.
+Backend & Base de Datos	Firebase Firestore	-	Base de datos NoSQL con suscripciones en tiempo real (Streams).
+Autenticación	Firebase Auth	-	Autenticación por correo/contraseña, gestión de sesiones y recuperación de accesos.
+Notificaciones	Firebase Cloud Messaging	-	Push notifications para cambios de timing y alertas de retraso.
+Almacenamiento	Firebase Storage	-	Evidencias fotográficas de tareas completadas.
+Gestión de Estado	Provider	6.x	Gestión de estado reactiva y escalable.
+Seguridad en Dispositivo	flutter_secure_storage	9.x	Cifrado AES en Android Keystore y Apple Keychain.
+Persistencia Local	SQLite / Drift	-	Offline-First: almacenamiento local para funcionar sin conexión.
+Control de Versiones	Git / GitHub	-	Repositorio público para revisión académica y colaboración.
 ---
 
 ## 🔐 7. Estrategia de Seguridad
