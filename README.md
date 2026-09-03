@@ -130,7 +130,6 @@ EventTiming-App/
 
 
 
-
 ## 🏗️ Arquitectura de la Solución
 
 La arquitectura sigue el patrón **Offline-First**: la app funciona sin conexión y sincroniza automáticamente al recuperar red.
@@ -146,6 +145,5 @@ graph TD
     H[API REST<br>Servicios Externos] --> A
     I[Git/GitHub<br>Control de Versiones] -.-> A
 
----
 
 
