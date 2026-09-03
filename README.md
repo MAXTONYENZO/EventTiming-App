@@ -300,37 +300,95 @@ event_timing/
    flutter run
    ```
 
+### 🛠️ Comandos Útiles
+
+| Comando | Descripción |
+|---------|-------------|
+| `flutter clean` | Limpia el caché del proyecto. |
+| `flutter pub get` | Actualiza dependencias. |
+| `flutter run` | Ejecuta la app en modo debug. |
+| `flutter build apk` | Genera un archivo APK para distribución. |
+| `flutter analyze` | Analiza el código en busca de errores. |
+
 ---
 
-## 💡 11. Metodología de Desarrollo
+## 💡 Metodología de Desarrollo
 
-El proyecto fue desarrollado integrando **Design Thinking** para la definición de la experiencia de usuario y **Metodologías Ágiles (Scrum/Kanban)** para la entrega continua:
+El proyecto fue desarrollado integrando **Design Thinking** para la definición de la experiencia de usuario y **Metodologías Ágiles (Scrum/Kanban)** para la entrega continua.
 
+### Flujo de Trabajo
 ```
 [ Empatizar ] ➔ [ Definir ] ➔ [ Idear ] ➔ [ Prototipar ] ➔ [ Testear ]
       │                                                         │
       └────────────────── Iteraciones Ágiles ───────────────────┘
 ```
+---
 
-- **Empatizar:** Entrevistas a wedding planners profesionales para identificar los momentos de mayor fricción durante el evento.
-- **Definir:** Mapeo del Customer Journey y definición del "Timeline Dinámico" como funcionalidad medular.
-- **Idear:** Sesiones de diseño de interfaz priorizando la legibilidad rápida a distancia mediante códigos de color (Naranja = Pendiente, Azul = En Curso, Verde = Completado).
-- **Prototipar:** Desarrollo modular en Flutter con componentes desacoplados reutilizables.
-- **Testear:** Pruebas unitarias automatizadas (`flutter test`) y validación continua de estados.
+### Fases del Proyecto
+
+| Fase | Metodología | Actividad |
+|------|-------------|-----------|
+| **Empatía** | Design Thinking | Entrevistas a wedding planners profesionales para identificar los momentos de mayor fricción durante el evento. |
+| **Definición** | Design Thinking | Mapeo del Customer Journey y definición del "Timeline Dinámico" como funcionalidad medular. |
+| **Ideación** | Design Thinking | Sesiones de diseño de interfaz priorizando la legibilidad rápida a distancia mediante códigos de color. |
+| **Prototipado** | Design Thinking | Desarrollo modular en Flutter con componentes desacoplados reutilizables. |
+| **Testing** | Ágil | Pruebas unitarias automatizadas (`flutter test`) y validación continua de estados. |
+| **Desarrollo** | Ágil (Sprints) | Implementación en Flutter, integración Firebase con entregas incrementales. |
+
+### Paleta de Colores por Estado
+
+| Estado | Color | Hex |
+|--------|-------|-----|
+| **Pendiente** | 🟠 Naranja | #FB8C00 |
+| **En Curso** | 🔵 Azul | #1976D2 |
+| **Completada** | 🟢 Verde | #43A047 |
 
 ---
 
-## 👥 10. Equipo de Proyecto
+## 👥 Equipo
 
-- **Lead Mobile Developer & Cloud Architect:** Implementación de Flutter, Provider y servicios en la nube con Firebase.
-- **UI/UX Designer:** Diseño de experiencia, paleta cromática de accesibilidad y microinteracciones.
-- **QA & Security Engineer:** Pruebas automatizadas, auditoría de reglas Firestore y validación de almacenamiento seguro.
+| Rol | Nombre | Responsabilidades |
+|-----|--------|-------------------|
+| **Lead Mobile Developer & Cloud Architect** | Max Tony Enzo Palacios Torres | Implementación de Flutter, Provider y servicios en la nube con Firebase. |
+| **UI/UX Designer** | Max Tony Enzo Palacios Torres | Diseño de experiencia, paleta cromática de accesibilidad y microinteracciones. |
+| **QA & Security Engineer** | Max Tony Enzo Palacios Torres | Pruebas automatizadas, auditoría de reglas Firestore y validación de almacenamiento seguro. |
 
 ---
 
-## 📄 11. Licencia
+## 📄 Licencia
 
-Este proyecto está bajo la Licencia **MIT**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
-=======
+Este proyecto está bajo la **Licencia MIT**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
+---
+
+## 🙏 Agradecimientos
+
+- **Universidad Católica del Norte** - Diseño de Aplicaciones Móviles.
+- **Flutter** y **Firebase** por su excelente documentación y herramientas.
+- **Todas las personas que con su retroalimentación han contribuido a mejorar este proyecto.**
+
+---
+
+**"Transformando la coordinación en eventos, un timeline a la vez."**
+
+📎 **Repositorio:** [https://github.com/MAXTONYENZO/EventTiming-App](https://github.com/MAXTONYENZO/EventTiming-App)
+
+---
+
+## 📊 Estado del Proyecto
+
+| Área | Estado |
+|------|--------|
+| **Análisis y Diseño** | ✅ Completado |
+| **Arquitectura** | ✅ Completado |
+| **Autenticación** | ✅ Implementada |
+| **CRUD de Tareas** | ✅ Implementado |
+| **Timeline en Tiempo Real** | ✅ Implementado |
+| **Roles de Usuario** | ⏳ Pendiente (Próximo paso) |
+| **Notificaciones Push** | ⏳ Pendiente (Próximo paso) |
+| **Pruebas en Dispositivos Reales** | ⏳ Pendiente (Próximo paso) |
+
+---
+
+**¡Gracias por leer!** Si tienes preguntas o sugerencias, no dudes en abrir un issue en el repositorio. 🚀
 
