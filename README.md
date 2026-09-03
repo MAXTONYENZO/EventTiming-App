@@ -81,7 +81,6 @@ graph TD
     B --> G[Storage<br>Evidencias Fotográficas]
     H[API REST<br>Servicios Externos] --> A
     I[Git/GitHub<br>Control de Versiones] -.-> A
-
 🧰 Stack Tecnológico
 Capa	Tecnología	Versión
 Frontend	Flutter + Dart	3.x
@@ -93,10 +92,46 @@ Notificaciones	Firebase Cloud Messaging	^14.6.5
 Almacenamiento	Firebase Storage	^11.5.0
 Seguridad	flutter_secure_storage + HTTPS	^9.0.0
 Control de Versiones	Git / GitHub	-
-
 🔒 Estrategia de Seguridad
 Pilar	Tecnología	Descripción
 Almacenamiento Cifrado	flutter_secure_storage	Utiliza EncryptedSharedPreferences en Android para cifrar tokens JWT y credenciales
 Comunicación Segura	HTTPS / TLS	Todas las comunicaciones con Firebase y APIs externas viajan cifradas
 Autenticación	Firebase Auth + JWT	Emite tokens renovables validados en cada petición
 Control de Acceso	Firebase Security Rules	Control granular por roles: planner, proveedores, novios
+💰 Simulador de Costos
+Concepto	Proveedor	Frecuencia	Costo USD
+Google Play Console	Google	Pago Único	$25.00
+Apple Developer Program	Apple	Suscripción Anual	$99.00
+Firebase (Blaze Plan)	Google Cloud	Estimado Mensual	$15.00
+Firebase Cloud Storage	Google Cloud	Estimado Mensual	$5.00
+Costo Total Estimado			$144.00 USD
+Presupuesto Asignado: $300.00 USD
+Eficiencia de Presupuesto: 52% libre
+
+📂 Estructura del Proyecto
+text
+EventTiming-App/
+├── .gitignore                 # Archivos ignorados por Git
+├── README.md                  # Documentación principal
+├── LICENSE                    # Licencia MIT
+├── pubspec.yaml               # Dependencias de Flutter
+├── lib/
+│   ├── main.dart              # Punto de entrada de la app
+│   ├── models/                # Modelos de datos (User, Event, Task)
+│   ├── screens/               # Pantallas (Login, Timeline)
+│   ├── widgets/               # Widgets reutilizables (TaskCard)
+│   └── services/              # Servicios (FirebaseService)
+├── assets/                    # Recursos estáticos (imágenes, fuentes)
+├── presentacion/              # Material de soporte
+│   └── EventTiming_Proyecto.pdf
+└── docs/                      # Documentación técnica
+    └── arquitectura.md
+🚀 Guía de Instalación y Despliegue
+Prerrequisitos
+Flutter SDK 3.x instalado
+
+Android Studio o VS Code
+
+Dispositivo Android (físico o emulador) con API 21+
+
+Cuenta de Firebase (para configuración opcional)
