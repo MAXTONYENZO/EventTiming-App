@@ -1,23 +1,57 @@
-<<<<<<< HEAD
-# ⏱️ EventTiming — Coordinación de Cronogramas de Eventos en Tiempo Real
+# ⏱️ EventTiming
 
-> Aplicación móvil multiplataforma (Android / iOS) desarrollada en **Flutter** con backend serverless en **Firebase** y gestión de estado reactiva con **Provider**. Permite a organizadores (*planners*), proveedores y anfitriones (*novios*) gestionar, sincronizar y monitorear el cronograma minuto a minuto de cualquier evento.
+**Aplicación Móvil Multiplataforma en Flutter con Integración Firebase para la Gestión del Timing en Tiempo Real en Eventos Sociales**
 
----
-
-## 📌 1. Problemática que Resuelve
-
-La organización y ejecución de eventos de alta exigencia (bodas, galas corporativas, festivales y convenciones) enfrenta retos críticos:
-
-- **Desconexión entre participantes:** Los cronogramas tradicionales en hojas de cálculo o documentos impresos quedan obsoletos ante el primer retraso o imprevisto.
-- **Falta de visibilidad en tiempo real:** Los proveedores (catering, fotografía, iluminación, orquestas) operan a ciegas respecto al estado de las actividades previas.
-- **Estrés en anfitriones y planners:** La constante necesidad de llamadas telefónicas y mensajes para confirmar si un hito inició o finalizó genera fatiga operativa y riesgo de errores de coordinación.
-
-**EventTiming** centraliza el cronograma dinámico en una aplicación móvil intuitiva y reactiva, garantizando que cada cambio de estado se refleje inmediatamente en todos los dispositivos conectados.
+[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=flat&logo=flutter)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=flat&logo=dart)](https://dart.dev)
+[![Firebase](https://img.shields.io/badge/Firebase-2026-FFCA28?style=flat&logo=firebase)](https://firebase.google.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## 🎯 2. Objetivos SMART
+## 📋 Tabla de Contenidos
+
+1. [Descripción del Proyecto](#descripción-del-proyecto)
+2. [Problemática](#problemática)
+3. [Pregunta Problema](#pregunta-problema)
+4. [Objetivos SMART](#objetivos-smart)
+5. [Arquitectura de la Solución](#arquitectura-de-la-solución)
+6. [Stack Tecnológico](#stack-tecnológico)
+7. [Estrategia de Seguridad](#estrategia-de-seguridad)
+8. [Simulador de Costos](#simulador-de-costos)
+9. [Estructura del Proyecto](#estructura-del-proyecto)
+10. [Guía de Instalación y Despliegue](#guía-de-instalación-y-despliegue)
+11. [Metodología](#metodología)
+12. [Equipo](#equipo)
+13. [Licencia](#licencia)
+
+---
+
+## 📱 1. Descripción del Proyecto
+
+**EventTiming** es una aplicación móvil multiplataforma desarrollada en **Flutter** con integración **Firebase** que permite la gestión colaborativa del cronograma en tiempo real para eventos sociales (bodas, celebraciones y eventos corporativos). La app sincroniza a wedding planners, proveedores y novios en un solo ecosistema, reduciendo los tiempos de coordinación y mejorando la comunicación durante todo el ciclo del evento.
+
+---
+
+## 🎯 2. Problemática
+
+Los organizadores de eventos y proveedores enfrentan una coordinación ineficiente debido a la falta de una herramienta móvil centralizada. Actualmente, la comunicación depende de canales fragmentados como WhatsApp, llamadas telefónicas y listas en papel, generando tres problemáticas críticas:
+
+| # | Problemática | Impacto |
+|---|--------------|---------|
+| 1 | **Falta de visibilidad en tiempo real** del estado de las tareas | Incremento de la carga operativa en un **40%** durante las horas previas al evento |
+| 2 | **Retrasos no comunicados oportunamente** | Desfases de hasta **30 minutos** en el cronograma |
+| 3 | **Procesos manuales desactualizados** | Más de **2 horas diarias** dedicadas a actualizar y comunicar cambios |
+
+---
+
+## ❓ 3. Pregunta Problema
+
+> ¿De qué manera la implementación de una aplicación móvil multiplataforma en Flutter con integración Firebase y sincronización en tiempo real permite reducir en un **50% los tiempos de coordinación** entre wedding planners y proveedores durante la organización y ejecución de eventos sociales?
+
+---
+
+## 🎯 4. Objetivos SMART
 
 | Dimensión | Definición del Objetivo |
 | :--- | :--- |
@@ -29,7 +63,8 @@ La organización y ejecución de eventos de alta exigencia (bodas, galas corpora
 
 ---
 
-## 🏗️ 3. Arquitectura de la Solución
+
+## 🏗️ 5. Arquitectura de la Solución
 
 La aplicación sigue una arquitectura limpia en capas (*Clean Architecture*) desacoplada, reactiva y mantenible:
 
@@ -72,7 +107,7 @@ graph TD
 
 ---
 
-## 🛠️ 4. Stack Tecnológico
+## 🛠️ 6. Stack Tecnológico
 
 - **Framework:** [Flutter 3.x](https://flutter.dev/) (Channel Stable)
 - **Lenguaje:** [Dart 3.x](https://dart.dev/)
@@ -85,7 +120,7 @@ graph TD
 
 ---
 
-## 🔐 5. Estrategia de Seguridad
+## 🔐 7. Estrategia de Seguridad
 
 1. **Almacenamiento Local Cifrado:**
    - Los tokens JWT de sesión y credenciales sensibles se guardan mediante `FlutterSecureStorage`, evitando el uso de almacenamiento plano (`SharedPreferences`).
@@ -99,7 +134,7 @@ graph TD
 
 ---
 
-## 💰 6. Simulador de Costos (Firebase)
+## 💰 8. Simulador de Costos (Firebase)
 
 Estimación proyectada para un volumen inicial de **100 eventos mensuales**, con un promedio de **50 tareas por evento** y **10 usuarios concurrentes** por evento:
 
@@ -116,7 +151,7 @@ Estimación proyectada para un volumen inicial de **100 eventos mensuales**, con
 
 ---
 
-## 📁 7. Estructura del Proyecto
+## 📁 9. Estructura del Proyecto
 
 ```
 event_timing/
@@ -151,7 +186,7 @@ event_timing/
 
 ---
 
-## 🚀 8. Guía de Instalación y Despliegue
+## 🚀 10. Guía de Instalación y Despliegue
 
 ### Requisitos Previos
 - **Flutter SDK:** versión 3.16 o superior ([Guía de instalación](https://docs.flutter.dev/get-started/install)).
@@ -203,7 +238,7 @@ event_timing/
 
 ---
 
-## 💡 9. Metodología de Desarrollo
+## 💡 11. Metodología de Desarrollo
 
 El proyecto fue desarrollado integrando **Design Thinking** para la definición de la experiencia de usuario y **Metodologías Ágiles (Scrum/Kanban)** para la entrega continua:
 
@@ -233,130 +268,5 @@ El proyecto fue desarrollado integrando **Design Thinking** para la definición 
 
 Este proyecto está bajo la Licencia **MIT**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 =======
-# ⏱️ EventTiming
-
-**Aplicación Móvil Multiplataforma en Flutter con Integración Firebase para la Gestión del Timing en Tiempo Real en Eventos Sociales**
-
-[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=flat&logo=flutter)](https://flutter.dev)
-[![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=flat&logo=dart)](https://dart.dev)
-[![Firebase](https://img.shields.io/badge/Firebase-2026-FFCA28?style=flat&logo=firebase)](https://firebase.google.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
----
-
-## 📋 Tabla de Contenidos
-
-1. [Descripción del Proyecto](#descripción-del-proyecto)
-2. [Problemática](#problemática)
-3. [Pregunta Problema](#pregunta-problema)
-4. [Objetivos SMART](#objetivos-smart)
-5. [Arquitectura de la Solución](#arquitectura-de-la-solución)
-6. [Stack Tecnológico](#stack-tecnológico)
-7. [Estrategia de Seguridad](#estrategia-de-seguridad)
-8. [Simulador de Costos](#simulador-de-costos)
-9. [Estructura del Proyecto](#estructura-del-proyecto)
-10. [Guía de Instalación y Despliegue](#guía-de-instalación-y-despliegue)
-11. [Metodología](#metodología)
-12. [Equipo](#equipo)
-13. [Licencia](#licencia)
-
----
-
-## 📱 Descripción del Proyecto
-
-**EventTiming** es una aplicación móvil multiplataforma desarrollada en **Flutter** con integración **Firebase** que permite la gestión colaborativa del cronograma en tiempo real para eventos sociales (bodas, celebraciones y eventos corporativos). La app sincroniza a wedding planners, proveedores y novios en un solo ecosistema, reduciendo los tiempos de coordinación y mejorando la comunicación durante todo el ciclo del evento.
-
----
-
-## 🎯 Problemática
-
-Los organizadores de eventos y proveedores enfrentan una coordinación ineficiente debido a la falta de una herramienta móvil centralizada. Actualmente, la comunicación depende de canales fragmentados como WhatsApp, llamadas telefónicas y listas en papel, generando tres problemáticas críticas:
-
-| # | Problemática | Impacto |
-|---|--------------|---------|
-| 1 | **Falta de visibilidad en tiempo real** del estado de las tareas | Incremento de la carga operativa en un **40%** durante las horas previas al evento |
-| 2 | **Retrasos no comunicados oportunamente** | Desfases de hasta **30 minutos** en el cronograma |
-| 3 | **Procesos manuales desactualizados** | Más de **2 horas diarias** dedicadas a actualizar y comunicar cambios |
-
----
-
-## ❓ Pregunta Problema
-
-> ¿De qué manera la implementación de una aplicación móvil multiplataforma en Flutter con integración Firebase y sincronización en tiempo real permite reducir en un **50% los tiempos de coordinación** entre wedding planners y proveedores durante la organización y ejecución de eventos sociales?
-
----
-
-## 🎯 Objetivos SMART
-
-### Objetivo General
-
-> Desarrollar una aplicación móvil multiplataforma en Flutter con integración Firebase que permita la gestión del timing en tiempo real en eventos sociales, logrando una **reducción del 50% en los tiempos de coordinación** entre wedding planners y proveedores, y alcanzando una **calificación de usabilidad superior a 80 puntos en la escala SUS**, en un período de **8 semanas** con enfoque en dispositivo Android.
-
-### Objetivos Específicos (3 Fases)
-
-| Fase | Objetivo | Plazo | Criterio de Éxito |
-|------|----------|-------|-------------------|
-| **1** | **Investigación de Usuario y Prototipado UX/UI** | Semana 2 | Diseñar wireframes y prototipo en Figma, evaluando con 5 usuarios y alcanzando SUS > 85 |
-| **2** | **Desarrollo Frontend e Integración API/Backend** | Semana 6 | Programar módulos en Flutter, integrar Firebase con tiempo de respuesta < 500 ms |
-| **3** | **Pruebas en Dispositivos Reales y Medición** | Semana 8 | Probar en 10 dispositivos Android, con batería <5%/hora y SUS > 80 |
-
----
-
-## 🧰 Stack Tecnológico
-
-| Capa | Tecnología | Versión |
-|------|------------|---------|
-| **Frontend** | Flutter + Dart | 3.x |
-| **State Management** | Provider | ^6.0.5 |
-| **Base de Datos Cloud** | Firebase Firestore | - |
-| **Base de Datos Local** | SQLite / Drift | Offline-First |
-| **Autenticación** | Firebase Auth (JWT) | ^4.16.0 |
-| **Notificaciones** | Firebase Cloud Messaging | ^14.6.5 |
-| **Almacenamiento** | Firebase Storage | ^11.5.0 |
-| **Seguridad** | flutter_secure_storage + HTTPS | ^9.0.0 |
-| **Control de Versiones** | Git / GitHub | - |
-
----
-
-## 🔒 Estrategia de Seguridad
-
-| Pilar | Tecnología | Descripción |
-|-------|------------|-------------|
-| **Almacenamiento Cifrado** | `flutter_secure_storage` | Utiliza EncryptedSharedPreferences en Android para cifrar tokens JWT y credenciales |
-| **Comunicación Segura** | HTTPS / TLS | Todas las comunicaciones con Firebase y APIs externas viajan cifradas |
-| **Autenticación** | Firebase Auth + JWT | Emite tokens renovables validados en cada petición |
-| **Control de Acceso** | Firebase Security Rules | Control granular por roles: planner, proveedores, novios |
-
----
-
-## 💰 Simulador de Costos
-
-| Concepto | Proveedor | Frecuencia | Costo USD |
-|----------|-----------|------------|-----------|
-| Google Play Console | Google | Pago Único | $25.00 |
-| Apple Developer Program | Apple | Suscripción Anual | $99.00 |
-| Firebase (Blaze Plan) | Google Cloud | Estimado Mensual | $15.00 |
-| Firebase Cloud Storage | Google Cloud | Estimado Mensual | $5.00 |
-| **Costo Total Estimado** | | | **$144.00 USD** |
-
-**Presupuesto Asignado:** $300.00 USD  
-**Eficiencia de Presupuesto:** 52% libre
-
----
 
 
-## 🏗️ Arquitectura de la Solución
-
-La arquitectura sigue el patrón **Offline-First**: la app funciona sin conexión y sincroniza automáticamente al recuperar red.
-
-```mermaid
-graph TD
-    A[Dispositivo Móvil<br>Flutter + Dart] --> B[Firebase Services]
-    A --> C[SQLite/Drift<br>Offline-First]
-    B --> D[Firestore<br>Base de Datos Tiempo Real]
-    B --> E[Auth<br>Autenticación JWT]
-    B --> F[Cloud Messaging<br>Notificaciones Push]
-    B --> G[Storage<br>Evidencias Fotográficas]
-    H[API REST<br>Servicios Externos] --> A
-    I[Git/GitHub<br>Control de Versiones] -.-> A
->>>>>>> bc76ceded9a02507cd335e1c628876722a3c8f44
