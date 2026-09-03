@@ -130,7 +130,7 @@ graph TD
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🛠️ 6. Stack Tecnológico
 
 | Capa | Tecnología | Versión | Propósito |
 |------|------------|---------|-----------|
@@ -147,7 +147,7 @@ graph TD
 
 ---
 
-## 🔐 Estrategia de Seguridad
+## 🔐 7. Estrategia de Seguridad
 
 ### Almacenamiento Local Cifrado
 
@@ -185,7 +185,7 @@ Validadores estrictos con expresiones regulares para:
 
 ---
 
-## 💰 Simulador de Costos
+## 💰 8. Simulador de Costos
 
 **Estimación proyectada** para un volumen inicial de **100 eventos mensuales**, con un promedio de **50 tareas por evento** y **10 usuarios concurrentes por evento**.
 
@@ -312,7 +312,7 @@ event_timing/
 
 ---
 
-## 💡 Metodología de Desarrollo
+## 💡 11. Metodología de Desarrollo
 
 El proyecto fue desarrollado integrando **Design Thinking** para la definición de la experiencia de usuario y **Metodologías Ágiles (Scrum/Kanban)** para la entrega continua.
 
@@ -345,7 +345,7 @@ El proyecto fue desarrollado integrando **Design Thinking** para la definición 
 
 ---
 
-## 👥 Equipo
+## 👥 12. Equipo
 
 | Rol | Nombre | Responsabilidades |
 |-----|--------|-------------------|
@@ -355,7 +355,7 @@ El proyecto fue desarrollado integrando **Design Thinking** para la definición 
 
 ---
 
-## 📄 Licencia
+## 📄 13. Licencia
 
 Este proyecto está bajo la **Licencia MIT**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
@@ -364,7 +364,6 @@ Este proyecto está bajo la **Licencia MIT**. Consulta el archivo [LICENSE](LICE
 ## 🙏 Agradecimientos
 
 - **Universidad Católica del Norte** - Diseño de Aplicaciones Móviles.
-- **Flutter** y **Firebase** por su excelente documentación y herramientas.
 - **Todas las personas que con su retroalimentación han contribuido a mejorar este proyecto.**
 
 ---
