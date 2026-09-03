@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Función auxiliar para validar autenticación básica
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Valida si el usuario actual es el propietario del documento
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Reglas para la colección 'users'
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isOwner(userId);
+      allow delete: if false; // Por seguridad, no permitir eliminación directa
+    }
+
+    // Reglas para la colección 'events'
+    match /events/{eventId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      // Solo el planner creador puede modificar o eliminar el evento
+      allow update, delete: if isAuthenticated() && (
+        resource.data.plannerId == request.auth.uid
+      );
+    }
+
+    // Reglas para la colección 'tasks'
+    match /tasks/{taskId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      // El planner o el proveedor asignado pueden actualizar el estado de la tarea
+      allow update: if isAuthenticated();
+      // Solo usuarios autenticados autorizados pueden eliminar tareas
+      allow delete: if isAuthenticated();
+    }
+  }
+}

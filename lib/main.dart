@@ -1,200 +1,96 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+import 'screens/login_screen.dart';
+import 'screens/register_screen.dart';
+import 'screens/splash_screen.dart';
+import 'screens/timeline_screen.dart';
+import 'services/auth_service.dart';
+import 'services/firestore_service.dart';
+import 'services/notification_service.dart';
+import 'utils/constants.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Inicialización de Firebase
+  try {
+    await Firebase.initializeApp();
+  } catch (e) {
+    debugPrint('[Firebase Init Warning] Firebase no configurado aún o en entorno local: $e');
+  }
+
+  // Inicializar servicio de notificaciones
+  await NotificationService().initialize();
+
   runApp(const EventTimingApp());
 }
 
+/// Aplicación Principal EventTiming
 class EventTimingApp extends StatelessWidget {
   const EventTimingApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'EventTiming',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-      home: const LoginScreen(),
-    );
-  }
-}
-
-// ==================== PANTALLA DE LOGIN ====================
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
-  void _login() {
-    // Simula una validación básica
-    if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Por favor, completa todos los campos'),
-          backgroundColor: Colors.orange,
+    return MultiProvider(
+      providers: [
+        // Servicio de Autenticación
+        Provider<AuthService>(
+          create: (_) => AuthService(),
         ),
-      );
-      return;
-    }
-
-    // Mensaje de éxito y navegación al timeline
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('✅ Inicio de sesión exitoso'),
-        backgroundColor: Colors.green,
-      ),
-    );
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const TimelineScreen()),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('EventTiming - Login'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.event,
-              size: 80,
-              color: Colors.blue,
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              'Bienvenido a EventTiming',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 30),
-            TextField(
-              controller: _emailController,
-              decoration: const InputDecoration(
-                labelText: 'Correo Electrónico',
-                prefixIcon: Icon(Icons.email),
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.emailAddress,
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Contraseña',
-                prefixIcon: Icon(Icons.lock),
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _login,
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text(
-                'Iniciar Sesión',
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('📧 Contacta al administrador para recuperar tu contraseña'),
-                  ),
-                );
-              },
-              child: const Text('¿Olvidaste tu contraseña?'),
-            ),
-          ],
+        // Servicio de Base de Datos Cloud Firestore
+        Provider<FirestoreService>(
+          create: (_) => FirestoreService(),
         ),
-      ),
-    );
-  }
-}
-
-// ==================== PANTALLA DEL TIMELINE ====================
-class TimelineScreen extends StatelessWidget {
-  const TimelineScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Timeline del Evento'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              Navigator.pop(context); // Regresa al login
-            },
+        // Stream reactivo del usuario autenticado
+        StreamProvider<User?>(
+          create: (context) => context.read<AuthService>().authStateChanges,
+          initialData: null,
+        ),
+      ],
+      child: MaterialApp(
+        title: 'EventTiming',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: AppConstants.primaryColor,
+            primary: AppConstants.primaryColor,
+            secondary: AppConstants.secondaryColor,
+            surface: Colors.white,
           ),
-        ],
-      ),
-      body: const Center(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.timeline,
-                size: 80,
-                color: Colors.blue,
+          scaffoldBackgroundColor: AppConstants.backgroundColor,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: AppConstants.primaryColor,
+            foregroundColor: Colors.white,
+            elevation: 2,
+            centerTitle: false,
+          ),
+          cardTheme: CardThemeData(
+            elevation: AppConstants.cardElevation,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppConstants.defaultBorderRadius),
+            ),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppConstants.primaryColor,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppConstants.defaultBorderRadius),
               ),
-              SizedBox(height: 20),
-              Text(
-                '📋 Aquí irá el timeline en tiempo real',
-                style: TextStyle(fontSize: 18),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Próximamente: sincronización con Firebase',
-                style: TextStyle(fontSize: 14, color: Colors.grey),
-                textAlign: TextAlign.center,
-              ),
-            ],
+            ),
           ),
         ),
-      ),
-      // Botón flotante para simular agregar tarea (ejemplo)
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('➕ Nueva tarea agregada (simulación)'),
-              backgroundColor: Colors.blue,
-            ),
-          );
+        initialRoute: AppConstants.routeSplash,
+        routes: {
+          AppConstants.routeSplash: (context) => const SplashScreen(),
+          AppConstants.routeLogin: (context) => const LoginScreen(),
+          AppConstants.routeRegister: (context) => const RegisterScreen(),
+          AppConstants.routeTimeline: (context) => const TimelineScreen(),
         },
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-        child: const Icon(Icons.add),
       ),
     );
   }

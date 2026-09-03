@@ -1,6 +1,6 @@
 {
-    "name": "event_timing_nuevo",
-    "short_name": "event_timing_nuevo",
+    "name": "event_timing",
+    "short_name": "event_timing",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
