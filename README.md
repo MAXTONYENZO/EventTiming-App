@@ -119,49 +119,99 @@ graph TD
     H[API REST<br>Servicios Externos] --> A
     I[Git/GitHub<br>Control de Versiones] -.-> A
 ```
-## 🛠️ 6. Stack Tecnológico
+## Diseño en Capas
 
-Capa	Tecnología	Versión	Propósito
-Framework	Flutter	3.x	Desarrollo multiplataforma (Android/iOS).
-Lenguaje	Dart	3.x	Lenguaje nativo de Flutter.
-Backend & Base de Datos	Firebase Firestore	-	Base de datos NoSQL con suscripciones en tiempo real (Streams).
-Autenticación	Firebase Auth	-	Autenticación por correo/contraseña, gestión de sesiones y recuperación de accesos.
-Notificaciones	Firebase Cloud Messaging	-	Push notifications para cambios de timing y alertas de retraso.
-Almacenamiento	Firebase Storage	-	Evidencias fotográficas de tareas completadas.
-Gestión de Estado	Provider	6.x	Gestión de estado reactiva y escalable.
-Seguridad en Dispositivo	flutter_secure_storage	9.x	Cifrado AES en Android Keystore y Apple Keychain.
-Persistencia Local	SQLite / Drift	-	Offline-First: almacenamiento local para funcionar sin conexión.
-Control de Versiones	Git / GitHub	-	Repositorio público para revisión académica y colaboración.
----
-
-## 🔐 7. Estrategia de Seguridad
-
-1. **Almacenamiento Local Cifrado:**
-   - Los tokens JWT de sesión y credenciales sensibles se guardan mediante `FlutterSecureStorage`, evitando el uso de almacenamiento plano (`SharedPreferences`).
-2. **Control de Acceso Basado en Roles (RBAC):**
-   - Perfiles diferenciados: `planner` (creador y administrador general), `proveedor` (ejecutor de hitos asignados) y `novio` (visualizador de timeline).
-   - Reglas de Firestore estrictas (`firestore.rules`) que impiden escrituras o eliminaciones no autorizadas.
-3. **Comunicaciones Cifradas:**
-   - Todas las llamadas al backend se realizan mediante HTTPS / TLS 1.3 con certificados SSL de Google Cloud.
-4. **Validación y Sanitización en Cliente:**
-   - Validadores estrictos con expresiones regulares para correos electrónicos, contraseñas de al menos 6 caracteres y control de desbordamiento en formularios.
+| Capa | Tecnología | Descripción |
+|------|------------|-------------|
+| **Presentación (UI)** | Flutter + Dart | Widgets, pantallas, gestión de estado con Provider. |
+| **Dominio (Lógica de Negocio)** | Dart | Modelos de datos, validadores, casos de uso. |
+| **Datos (Persistencia)** | Firebase Firestore + SQLite | Sincronización en tiempo real y almacenamiento local Offline-First. |
+| **Servicios Externos** | Firebase Auth, FCM, Storage | Autenticación, notificaciones push y almacenamiento de archivos. |
 
 ---
 
-## 💰 8. Simulador de Costos (Firebase)
+## 🛠️ Stack Tecnológico
 
-Estimación proyectada para un volumen inicial de **100 eventos mensuales**, con un promedio de **50 tareas por evento** y **10 usuarios concurrentes** por evento:
+| Capa | Tecnología | Versión | Propósito |
+|------|------------|---------|-----------|
+| **Framework** | Flutter | 3.x | Desarrollo multiplataforma (Android/iOS). |
+| **Lenguaje** | Dart | 3.x | Lenguaje nativo de Flutter. |
+| **Backend & Base de Datos** | Firebase Firestore | - | Base de datos NoSQL con suscripciones en tiempo real (Streams). |
+| **Autenticación** | Firebase Auth | - | Autenticación por correo/contraseña, gestión de sesiones y recuperación de accesos. |
+| **Notificaciones** | Firebase Cloud Messaging | - | Push notifications para cambios de timing y alertas de retraso. |
+| **Almacenamiento** | Firebase Storage | - | Evidencias fotográficas de tareas completadas. |
+| **Gestión de Estado** | Provider | 6.x | Gestión de estado reactiva y escalable. |
+| **Seguridad en Dispositivo** | `flutter_secure_storage` | 9.x | Cifrado AES en Android Keystore y Apple Keychain. |
+| **Persistencia Local** | SQLite / Drift | - | Offline-First: almacenamiento local para funcionar sin conexión. |
+| **Control de Versiones** | Git / GitHub | - | Repositorio público para revisión académica y colaboración. |
+
+---
+
+## 🔐 Estrategia de Seguridad
+
+### Almacenamiento Local Cifrado
+
+Los tokens JWT de sesión y credenciales sensibles se guardan mediante **`flutter_secure_storage`** (EncryptedSharedPreferences en Android y Apple Keychain en iOS), evitando el uso de almacenamiento plano (SharedPreferences).
+
+### Control de Acceso Basado en Roles (RBAC)
+
+| Rol | Permisos |
+|-----|----------|
+| **Planner** | Creación y administración general del evento. |
+| **Proveedor** | Ejecución de hitos asignados y actualización de estado. |
+| **Novio** | Visualización del timeline en tiempo real. |
+
+Las reglas de Firestore (`firestore.rules`) impiden escrituras o eliminaciones no autorizadas.
+
+### Comunicaciones Cifradas
+
+Todas las llamadas al backend se realizan mediante **HTTPS / TLS 1.3** con certificados SSL de Google Cloud, garantizando la confidencialidad de los datos transmitidos.
+
+### Validación y Sanitización en Cliente
+
+Validadores estrictos con expresiones regulares para:
+- Correos electrónicos.
+- Contraseñas de al menos 6 caracteres.
+- Control de desbordamiento en formularios.
+
+### Resumen de Seguridad
+
+| Pilar | Tecnología | Descripción |
+|-------|------------|-------------|
+| **Almacenamiento Cifrado** | `flutter_secure_storage` | Cifra tokens y credenciales en el dispositivo. |
+| **Comunicación Segura** | HTTPS / TLS 1.3 | Todas las peticiones viajan cifradas. |
+| **Autenticación** | Firebase Auth + JWT | Tokens renovables validados en cada petición. |
+| **Control de Acceso** | Firebase Security Rules | Control granular por roles (planner, proveedores, novios). |
+
+---
+
+## 💰 Simulador de Costos
+
+**Estimación proyectada** para un volumen inicial de **100 eventos mensuales**, con un promedio de **50 tareas por evento** y **10 usuarios concurrentes por evento**.
 
 | Concepto / Servicio | Consumo Mensual Estimado | Plan Spark (Gratis) | Plan Blaze (Pay-as-you-go) |
-| :--- | :--- | :--- | :--- |
-| **Firebase Auth** | ~1,000 usuarios activos | **Gratis** (hasta 50,000 / mes) | $0.00 USD |
-| **Firestore: Lecturas** | ~350,000 lecturas / mes | **Gratis** (50,000 / día = 1.5M / mes) | $0.00 USD (dentro del cupo) |
-| **Firestore: Escrituras** | ~25,000 escrituras / mes | **Gratis** (20,000 / día = 600K / mes) | $0.00 USD (dentro del cupo) |
-| **Firestore: Almacenamiento** | ~250 MB | **Gratis** (hasta 1 GB) | $0.00 USD |
-| **Tráfico de Red Egress** | ~1.5 GB | **Gratis** (hasta 10 GB / mes) | $0.00 USD |
+|---------------------|--------------------------|---------------------|----------------------------|
+| **Firebase Auth** | ~1,000 usuarios activos | Gratis (hasta 50,000 / mes) | $0.00 USD |
+| **Firestore: Lecturas** | ~350,000 lecturas / mes | Gratis (50,000 / día = 1.5M / mes) | $0.00 USD |
+| **Firestore: Escrituras** | ~25,000 escrituras / mes | Gratis (20,000 / día = 600K / mes) | $0.00 USD |
+| **Firestore: Almacenamiento** | ~250 MB | Gratis (hasta 1 GB) | $0.00 USD |
+| **Tráfico de Red Egress** | ~1.5 GB | Gratis (hasta 10 GB / mes) | $0.00 USD |
 | **Costo Total Estimado** | — | **$0.00 USD / mes** | **~$0.00 - $2.50 USD / mes** |
 
-> *Nota:* Para la fase de lanzamiento y escalamiento temprano, el **Plan Spark Gratuito** de Firebase cubre el 100% de la operación sin incurrir en costos de infraestructura.
+### 📊 Resumen de Costos
+
+| Concepto | Proveedor | Frecuencia | Costo USD |
+|----------|-----------|------------|-----------|
+| Google Play Console | Google | Pago Único | $25.00 |
+| Apple Developer Program | Apple | Suscripción Anual | $99.00 |
+| Firebase (Blaze Plan) | Google Cloud | Estimado Mensual | $15.00 |
+| Firebase Cloud Storage | Google Cloud | Estimado Mensual | $5.00 |
+| **Costo Total Estimado** | | | **$144.00 USD** |
+
+**Presupuesto Asignado:** $300.00 USD  
+**Eficiencia de Presupuesto:** 52% libre
+
+**Nota:** Para la fase de lanzamiento y escalamiento temprano, el **Plan Spark Gratuito** de Firebase cubre el 100% de la operación sin incurrir en costos de infraestructura.
 
 ---
 
