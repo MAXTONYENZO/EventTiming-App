@@ -67,6 +67,49 @@ Los organizadores de eventos y proveedores enfrentan una coordinación ineficien
 
 ---
 
+## 🧰 Stack Tecnológico
+
+| Capa | Tecnología | Versión |
+|------|------------|---------|
+| **Frontend** | Flutter + Dart | 3.x |
+| **State Management** | Provider | ^6.0.5 |
+| **Base de Datos Cloud** | Firebase Firestore | - |
+| **Base de Datos Local** | SQLite / Drift | Offline-First |
+| **Autenticación** | Firebase Auth (JWT) | ^4.16.0 |
+| **Notificaciones** | Firebase Cloud Messaging | ^14.6.5 |
+| **Almacenamiento** | Firebase Storage | ^11.5.0 |
+| **Seguridad** | flutter_secure_storage + HTTPS | ^9.0.0 |
+| **Control de Versiones** | Git / GitHub | - |
+
+---
+
+## 🔒 Estrategia de Seguridad
+
+| Pilar | Tecnología | Descripción |
+|-------|------------|-------------|
+| **Almacenamiento Cifrado** | `flutter_secure_storage` | Utiliza EncryptedSharedPreferences en Android para cifrar tokens JWT y credenciales |
+| **Comunicación Segura** | HTTPS / TLS | Todas las comunicaciones con Firebase y APIs externas viajan cifradas |
+| **Autenticación** | Firebase Auth + JWT | Emite tokens renovables validados en cada petición |
+| **Control de Acceso** | Firebase Security Rules | Control granular por roles: planner, proveedores, novios |
+
+---
+
+## 💰 Simulador de Costos
+
+| Concepto | Proveedor | Frecuencia | Costo USD |
+|----------|-----------|------------|-----------|
+| Google Play Console | Google | Pago Único | $25.00 |
+| Apple Developer Program | Apple | Suscripción Anual | $99.00 |
+| Firebase (Blaze Plan) | Google Cloud | Estimado Mensual | $15.00 |
+| Firebase Cloud Storage | Google Cloud | Estimado Mensual | $5.00 |
+| **Costo Total Estimado** | | | **$144.00 USD** |
+
+**Presupuesto Asignado:** $300.00 USD  
+**Eficiencia de Presupuesto:** 52% libre
+
+---
+
+
 ## 🏗️ Arquitectura de la Solución
 
 La arquitectura sigue el patrón **Offline-First**: la app funciona sin conexión y sincroniza automáticamente al recuperar red.
